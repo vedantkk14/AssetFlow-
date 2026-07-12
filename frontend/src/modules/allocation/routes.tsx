@@ -1,11 +1,18 @@
 import { RouteObject } from 'react-router-dom';
-import AllocationsListPage from './pages/AllocationsListPage';
+import AllocationDashboardPage from './pages/AllocationDashboardPage';
 import AllocateAssetPage from './pages/AllocateAssetPage';
+import TransferRequestsPage from './pages/TransferRequestsPage';
+import ReturnRequestsPage from './pages/ReturnRequestsPage';
+import AllocationHistoryPage from './pages/AllocationHistoryPage';
+import MyAllocationsPage from './pages/MyAllocationsPage';
 
-// TODO: Wrap routes with ProtectedRoute / role-based access as needed
 const AllocationRoutes: RouteObject[] = [
-  { path: 'allocations-list', element: <AllocationsListPage /> },
-  { path: 'allocate-asset', element: <AllocateAssetPage /> },
+  { index: true, element: <AllocationDashboardPage /> },
+  { path: 'allocate', element: <AllocateAssetPage /> },
+  { path: 'transfers', element: <TransferRequestsPage /> },
+  { path: 'returns', element: <ReturnRequestsPage /> },
+  { path: 'history', element: <AllocationHistoryPage /> },
+  { path: 'my-allocations', element: <MyAllocationsPage /> },
 ];
 
 export default AllocationRoutes;

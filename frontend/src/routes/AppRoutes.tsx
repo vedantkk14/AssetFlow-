@@ -8,6 +8,7 @@ import { useAuth } from '@/hooks/useAuth';
 import { ROLES, ROLE_DASHBOARD_PATH } from '@/types/role.types';
 import AuthRoutes from '@/modules/auth/routes';
 import OrganizationRoutes from '@/modules/organization/routes';
+import AllocationRoutes from '@/modules/allocation/routes';
 import AdminDashboardPage from '@/modules/dashboard/pages/AdminDashboardPage';
 import AssetManagerDashboardPage from '@/modules/dashboard/pages/AssetManagerDashboardPage';
 import DepartmentHeadDashboardPage from '@/modules/dashboard/pages/DepartmentHeadDashboardPage';
@@ -67,6 +68,20 @@ const AppRoutes = () => {
       <Route element={<ProtectedRoute allowedRoles={[ROLES.ADMIN]} />}>
         <Route path="/organization" element={<DashboardLayout />}>
           {OrganizationRoutes.map((route) =>
+            'index' in route && route.index ? (
+              <Route key="index" index element={route.element} />
+            ) : (
+              <Route key={route.path} path={route.path} element={route.element} />
+            )
+          )}
+        </Route>
+      </Route>
+
+      <Route
+        element={<ProtectedRoute allowedRoles={[ROLES.ADMIN, ROLES.ASSET_MANAGER, ROLES.DEPARTMENT_HEAD, ROLES.EMPLOYEE]} />}
+      >
+        <Route path="/allocation" element={<DashboardLayout />}>
+          {AllocationRoutes.map((route) =>
             'index' in route && route.index ? (
               <Route key="index" index element={route.element} />
             ) : (

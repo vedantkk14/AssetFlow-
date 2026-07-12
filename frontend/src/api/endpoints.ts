@@ -16,4 +16,6 @@ export const API_ENDPOINTS = {
     DEPARTMENT_HEAD: '/dashboard/department',
     EMPLOYEE: '/dashboard/employee',
   },
+  ALLOCATIONS: '/allocations',
+  TRANSFERS: '/transfers',
 } as const;

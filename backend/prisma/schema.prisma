@@ -64,3 +64,60 @@ model AssetCategory {
 
   @@map("asset_categories")
 }
+
+enum AllocationStatus {
+  ACTIVE
+  RETURN_REQUESTED
+  RETURNED
+  OVERDUE
+  TRANSFER_PENDING
+  TRANSFERRED
+}
+
+enum TransferStatus {
+  PENDING
+  APPROVED
+  REJECTED
+}
+
+// assetId is a plain column (not a relation) until the Asset module merges and
+// defines Asset.id. employeeId/allocatedBy are also plain columns (rather than
+// relations to User) for symmetry, since assetId can't be relational yet -
+// service code resolves both via manual lookups instead of Prisma `include`.
+model AssetAllocation {
+  id                 String           @id @default(cuid())
+  assetId            String
+  employeeId         String
+  allocatedBy        String
+  allocatedDate      DateTime         @default(now())
+  expectedReturnDate DateTime?
+  actualReturnDate   DateTime?
+  status             AllocationStatus @default(ACTIVE)
+  conditionAtIssue   String?
+  conditionAtReturn  String?
+  notes              String?          @db.Text
+  createdAt          DateTime         @default(now())
+  updatedAt          DateTime         @updatedAt
+
+  @@index([assetId])
+  @@index([employeeId])
+  @@map("asset_allocations")
+}
+
+// See AssetAllocation comment above: assetId/requestedBy/currentHolder/newHolder/
+// approvedBy are plain columns, not relations, until the Asset module merges.
+model TransferRequest {
+  id            String         @id @default(cuid())
+  assetId       String
+  requestedBy   String
+  currentHolder String
+  newHolder     String
+  reason        String?        @db.Text
+  status        TransferStatus @default(PENDING)
+  approvedBy    String?
+  requestedAt   DateTime       @default(now())
+  approvedAt    DateTime?
+
+  @@index([assetId])
+  @@map("transfer_requests")
+}
