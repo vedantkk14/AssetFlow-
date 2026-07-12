@@ -105,9 +105,14 @@ export const usePatchAssetStatus = () => {
 };
 
 // Fetch Categories & Departments (helper hooks for lists)
+// Both endpoints are paginated ({ items, total, page, limit, totalPages }),
+// not plain arrays - request a high limit so every active option shows up
+// in the Register/Edit Asset form's dropdowns.
 export const getCategories = async (): Promise<Category[]> => {
-  const response = await axiosInstance.get<{ data: Category[] }>(API_ENDPOINTS.CATEGORIES);
-  return response.data.data;
+  const response = await axiosInstance.get<{ data: { items: Category[] } }>(API_ENDPOINTS.CATEGORIES, {
+    params: { limit: 100, status: 'ACTIVE' },
+  });
+  return response.data.data.items;
 };
 
 export const useCategories = () => {
@@ -118,8 +123,10 @@ export const useCategories = () => {
 };
 
 export const getDepartments = async (): Promise<Department[]> => {
-  const response = await axiosInstance.get<{ data: Department[] }>(API_ENDPOINTS.DEPARTMENTS);
-  return response.data.data;
+  const response = await axiosInstance.get<{ data: { items: Department[] } }>(API_ENDPOINTS.DEPARTMENTS, {
+    params: { limit: 100, status: 'ACTIVE' },
+  });
+  return response.data.data.items;
 };
 
 export const useDepartments = () => {
