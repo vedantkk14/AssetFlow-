@@ -1,0 +1,62 @@
+import { Navigate, Route, Routes } from 'react-router-dom';
+import AuthLayout from '@/components/layout/AuthLayout';
+import ProtectedRoute from '@/components/shared/ProtectedRoute';
+import PublicRoute from '@/components/shared/PublicRoute';
+import Loader from '@/components/shared/Loader';
+import { useAuth } from '@/hooks/useAuth';
+import { ROLES, ROLE_DASHBOARD_PATH } from '@/types/role.types';
+import AuthRoutes from '@/modules/auth/routes';
+import AdminDashboardPage from '@/modules/dashboard/pages/AdminDashboardPage';
+import AssetManagerDashboardPage from '@/modules/dashboard/pages/AssetManagerDashboardPage';
+import DepartmentHeadDashboardPage from '@/modules/dashboard/pages/DepartmentHeadDashboardPage';
+import EmployeeDashboardPage from '@/modules/dashboard/pages/EmployeeDashboardPage';
+
+const RootRedirect = () => {
+  const { user, isAuthenticated, isLoading } = useAuth();
+
+  if (isLoading) {
+    return <Loader fullScreen />;
+  }
+
+  if (isAuthenticated && user) {
+    return <Navigate to={ROLE_DASHBOARD_PATH[user.role]} replace />;
+  }
+
+  return <Navigate to="/login" replace />;
+};
+
+const AppRoutes = () => {
+  return (
+    <Routes>
+      <Route path="/" element={<RootRedirect />} />
+
+      <Route element={<PublicRoute />}>
+        <Route element={<AuthLayout />}>
+          {AuthRoutes.map((route) => (
+            <Route key={route.path} path={route.path} element={route.element} />
+          ))}
+        </Route>
+      </Route>
+
+      <Route element={<ProtectedRoute allowedRoles={[ROLES.ADMIN]} />}>
+        <Route path="/admin/dashboard" element={<AdminDashboardPage />} />
+      </Route>
+
+      <Route element={<ProtectedRoute allowedRoles={[ROLES.ASSET_MANAGER]} />}>
+        <Route path="/asset-manager/dashboard" element={<AssetManagerDashboardPage />} />
+      </Route>
+
+      <Route element={<ProtectedRoute allowedRoles={[ROLES.DEPARTMENT_HEAD]} />}>
+        <Route path="/department/dashboard" element={<DepartmentHeadDashboardPage />} />
+      </Route>
+
+      <Route element={<ProtectedRoute allowedRoles={[ROLES.EMPLOYEE]} />}>
+        <Route path="/employee/dashboard" element={<EmployeeDashboardPage />} />
+      </Route>
+
+      <Route path="*" element={<Navigate to="/" replace />} />
+    </Routes>
+  );
+};
+
+export default AppRoutes;

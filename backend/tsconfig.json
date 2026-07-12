@@ -1,0 +1,44 @@
+{
+  "compilerOptions": {
+    "target": "ES2020",
+    "module": "CommonJS",
+    "moduleResolution": "node",
+    "outDir": "dist",
+    "rootDir": "src",
+    "strict": true,
+    "esModuleInterop": true,
+    "skipLibCheck": true,
+    "forceConsistentCasingInFileNames": true,
+    "resolveJsonModule": true,
+    "baseUrl": "src",
+    "paths": {
+      "@config/*": [
+        "config/*"
+      ],
+      "@modules/*": [
+        "modules/*"
+      ],
+      "@middlewares/*": [
+        "middlewares/*"
+      ],
+      "@utils/*": [
+        "utils/*"
+      ],
+      "@types/*": [
+        "types/*"
+      ],
+      "@validations/*": [
+        "validations/*"
+      ],
+      "@constants/*": [
+        "constants/*"
+      ]
+    }
+  },
+  "include": [
+    "src"
+  ],
+  "ts-node": {
+    "files": true
+  }
+}
