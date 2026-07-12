@@ -13,6 +13,9 @@ import AdminDashboardPage from '@/modules/dashboard/pages/AdminDashboardPage';
 import AssetManagerDashboardPage from '@/modules/dashboard/pages/AssetManagerDashboardPage';
 import DepartmentHeadDashboardPage from '@/modules/dashboard/pages/DepartmentHeadDashboardPage';
 import EmployeeDashboardPage from '@/modules/dashboard/pages/EmployeeDashboardPage';
+import AssetsListPage from '@/modules/assets/pages/AssetsListPage';
+import AddAssetPage from '@/modules/assets/pages/AddAssetPage';
+import AssetDetailsPage from '@/modules/assets/pages/AssetDetailsPage';
 
 const RootRedirect = () => {
   const { user, isAuthenticated, isLoading } = useAuth();
@@ -44,24 +47,36 @@ const AppRoutes = () => {
       <Route element={<ProtectedRoute allowedRoles={[ROLES.ADMIN]} />}>
         <Route element={<DashboardLayout />}>
           <Route path="/admin/dashboard" element={<AdminDashboardPage />} />
+          <Route path="/admin/assets" element={<AssetsListPage />} />
+          <Route path="/admin/assets/new" element={<AddAssetPage />} />
+          <Route path="/admin/assets/:id" element={<AssetDetailsPage />} />
+          <Route path="/admin/assets/:id/edit" element={<AddAssetPage />} />
         </Route>
       </Route>
 
       <Route element={<ProtectedRoute allowedRoles={[ROLES.ASSET_MANAGER]} />}>
         <Route element={<DashboardLayout />}>
           <Route path="/asset-manager/dashboard" element={<AssetManagerDashboardPage />} />
+          <Route path="/asset-manager/assets" element={<AssetsListPage />} />
+          <Route path="/asset-manager/assets/new" element={<AddAssetPage />} />
+          <Route path="/asset-manager/assets/:id" element={<AssetDetailsPage />} />
+          <Route path="/asset-manager/assets/:id/edit" element={<AddAssetPage />} />
         </Route>
       </Route>
 
       <Route element={<ProtectedRoute allowedRoles={[ROLES.DEPARTMENT_HEAD]} />}>
         <Route element={<DashboardLayout />}>
           <Route path="/department/dashboard" element={<DepartmentHeadDashboardPage />} />
+          <Route path="/department/assets" element={<AssetsListPage />} />
+          <Route path="/department/assets/:id" element={<AssetDetailsPage />} />
         </Route>
       </Route>
 
       <Route element={<ProtectedRoute allowedRoles={[ROLES.EMPLOYEE]} />}>
         <Route element={<DashboardLayout />}>
           <Route path="/employee/dashboard" element={<EmployeeDashboardPage />} />
+          <Route path="/employee/assets" element={<AssetsListPage />} />
+          <Route path="/employee/assets/:id" element={<AssetDetailsPage />} />
         </Route>
       </Route>
 

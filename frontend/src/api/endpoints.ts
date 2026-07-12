@@ -18,4 +18,12 @@ export const API_ENDPOINTS = {
   },
   ALLOCATIONS: '/allocations',
   TRANSFERS: '/transfers',
+  ASSETS: {
+    BASE: '/assets',
+    DETAILS: (id: string) => `/assets/${id}`,
+    STATUS: (id: string) => `/assets/${id}/status`,
+    SEARCH: '/assets/search',
+    CATEGORIES: (categoryId: string) => `/assets/categories/${categoryId}`,
+    DEPARTMENTS: (departmentId: string) => `/assets/departments/${departmentId}`,
+  },
 } as const;

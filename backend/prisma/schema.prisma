@@ -20,17 +20,18 @@ enum Status {
 }
 
 model User {
-  id               String      @id @default(cuid())
+  id               String            @id @default(cuid())
   name             String
-  email            String      @unique
+  email            String            @unique
   password         String
-  role             Role        @default(EMPLOYEE)
+  role             Role              @default(EMPLOYEE)
   departmentId     String?
-  department       Department? @relation("DepartmentEmployees", fields: [departmentId], references: [id])
-  headOfDepartment Department? @relation("DepartmentHead")
-  status           Status      @default(ACTIVE)
-  createdAt        DateTime    @default(now())
-  updatedAt        DateTime    @updatedAt
+  department       Department?       @relation("DepartmentEmployees", fields: [departmentId], references: [id])
+  headOfDepartment Department?       @relation("DepartmentHead")
+  status           Status            @default(ACTIVE)
+  createdAssets    Asset[]           @relation("AssetCreator")
+  createdAt        DateTime          @default(now())
+  updatedAt        DateTime          @updatedAt
 
   @@map("users")
 }
@@ -46,6 +47,7 @@ model Department {
   departmentHeadId   String?      @unique
   departmentHead     User?        @relation("DepartmentHead", fields: [departmentHeadId], references: [id])
   employees          User[]       @relation("DepartmentEmployees")
+  assets             Asset[]
   status             Status       @default(ACTIVE)
   createdAt          DateTime     @default(now())
   updatedAt          DateTime     @updatedAt
@@ -58,11 +60,62 @@ model AssetCategory {
   name                  String   @unique
   description           String?  @db.Text
   defaultWarrantyMonths Int?
+  assets                Asset[]
   status                Status   @default(ACTIVE)
   createdAt             DateTime @default(now())
   updatedAt             DateTime @updatedAt
 
   @@map("asset_categories")
+}
+
+enum AssetStatus {
+  AVAILABLE
+  ALLOCATED
+  RESERVED
+  UNDER_MAINTENANCE
+  LOST
+  RETIRED
+  DISPOSED
+}
+
+enum AssetCondition {
+  NEW
+  GOOD
+  FAIR
+  DAMAGED
+}
+
+model Asset {
+  id            String            @id @default(cuid())
+  assetTag      String            @unique
+  name          String
+  description   String?           @db.Text
+  serialNumber  String            @unique
+  categoryId    String
+  category      AssetCategory     @relation(fields: [categoryId], references: [id])
+  departmentId  String
+  department    Department        @relation(fields: [departmentId], references: [id])
+  location      String
+  purchaseDate  DateTime
+  purchaseCost  Float
+  condition     AssetCondition    @default(NEW)
+  status        AssetStatus       @default(AVAILABLE)
+  manufacturer  String?
+  model         String?
+  vendor        String?
+  warrantyStart DateTime?
+  warrantyEnd   DateTime?
+  imageUrl      String?           @db.Text
+  qrCode        String?           @db.Text
+  isBookable    Boolean           @default(false)
+  createdBy     String
+  creator       User              @relation("AssetCreator", fields: [createdBy], references: [id])
+  allocations   AssetAllocation[]
+  transfers     TransferRequest[]
+  createdAt     DateTime          @default(now())
+  updatedAt     DateTime          @updatedAt
+
+  @@map("assets")
 }
 
 enum AllocationStatus {
@@ -80,13 +133,10 @@ enum TransferStatus {
   REJECTED
 }
 
-// assetId is a plain column (not a relation) until the Asset module merges and
-// defines Asset.id. employeeId/allocatedBy are also plain columns (rather than
-// relations to User) for symmetry, since assetId can't be relational yet -
-// service code resolves both via manual lookups instead of Prisma `include`.
 model AssetAllocation {
   id                 String           @id @default(cuid())
   assetId            String
+  asset              Asset            @relation(fields: [assetId], references: [id])
   employeeId         String
   allocatedBy        String
   allocatedDate      DateTime         @default(now())
@@ -104,11 +154,10 @@ model AssetAllocation {
   @@map("asset_allocations")
 }
 
-// See AssetAllocation comment above: assetId/requestedBy/currentHolder/newHolder/
-// approvedBy are plain columns, not relations, until the Asset module merges.
 model TransferRequest {
   id            String         @id @default(cuid())
   assetId       String
+  asset         Asset          @relation(fields: [assetId], references: [id])
   requestedBy   String
   currentHolder String
   newHolder     String
