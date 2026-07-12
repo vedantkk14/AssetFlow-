@@ -41,7 +41,7 @@ const Sidebar = ({ isCollapsed, setIsCollapsed, onMobileClose }: SidebarProps) =
           { label: 'Dashboard', path: '/admin/dashboard', icon: LayoutDashboard },
           { label: 'Organization Setup', path: '/organization', icon: Building2 },
           { label: 'Assets', path: '/admin/assets', icon: Package },
-          { label: 'Allocation & Transfer', path: '/admin/allocation', icon: ArrowLeftRight },
+          { label: 'Allocation & Transfer', path: '/allocation', icon: ArrowLeftRight },
           { label: 'Resource Booking', path: '/admin/booking', icon: CalendarRange },
           { label: 'Maintenance', path: '/admin/maintenance', icon: Wrench },
           { label: 'Audit', path: '/admin/audit', icon: ClipboardCheck },
@@ -52,7 +52,7 @@ const Sidebar = ({ isCollapsed, setIsCollapsed, onMobileClose }: SidebarProps) =
         return [
           { label: 'Dashboard', path: '/asset-manager/dashboard', icon: LayoutDashboard },
           { label: 'Assets', path: '/asset-manager/assets', icon: Package },
-          { label: 'Allocation & Transfer', path: '/asset-manager/allocation', icon: ArrowLeftRight },
+          { label: 'Allocation & Transfer', path: '/allocation', icon: ArrowLeftRight },
           { label: 'Maintenance', path: '/asset-manager/maintenance', icon: Wrench },
           { label: 'Notifications', path: '/asset-manager/notifications', icon: Bell },
         ];
@@ -60,7 +60,7 @@ const Sidebar = ({ isCollapsed, setIsCollapsed, onMobileClose }: SidebarProps) =
         return [
           { label: 'Dashboard', path: '/department/dashboard', icon: LayoutDashboard },
           { label: 'Department Assets', path: '/department/assets', icon: Package },
-          { label: 'Allocation Requests', path: '/department/allocations', icon: ArrowLeftRight },
+          { label: 'Allocation Requests', path: '/allocation', icon: ArrowLeftRight },
           { label: 'Bookings', path: '/department/bookings', icon: CalendarRange },
           { label: 'Reports', path: '/department/reports', icon: BarChart3 },
           { label: 'Notifications', path: '/department/notifications', icon: Bell },
@@ -72,7 +72,7 @@ const Sidebar = ({ isCollapsed, setIsCollapsed, onMobileClose }: SidebarProps) =
           { label: 'My Assets', path: '/employee/assets', icon: Package },
           { label: 'Book Resource', path: '/employee/bookings', icon: CalendarRange },
           { label: 'Maintenance Requests', path: '/employee/maintenance', icon: Wrench },
-          { label: 'Transfer Requests', path: '/employee/transfers', icon: ArrowLeftRight },
+          { label: 'My Allocations', path: '/allocation/my-allocations', icon: ArrowLeftRight },
           { label: 'Notifications', path: '/employee/notifications', icon: Bell },
           { label: 'Profile', path: '/employee/profile', icon: User },
         ];
