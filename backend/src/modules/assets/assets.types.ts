@@ -2,41 +2,41 @@ import { AssetStatus, AssetCondition } from '@prisma/client';
 
 export interface CreateAssetInput {
   name: string;
-  description?: string;
+  description?: string | null;
   serialNumber: string;
   categoryId: string;
   departmentId: string;
   location: string;
-  purchaseDate: string;
+  purchaseDate: Date;
   purchaseCost: number;
   condition?: AssetCondition;
   status?: AssetStatus;
-  manufacturer?: string;
-  model?: string;
-  vendor?: string;
-  warrantyStart?: string;
-  warrantyEnd?: string;
-  imageUrl?: string;
+  manufacturer?: string | null;
+  model?: string | null;
+  vendor?: string | null;
+  warrantyStart?: Date | null;
+  warrantyEnd?: Date | null;
+  imageUrl?: string | null;
   isBookable?: boolean;
 }
 
 export interface UpdateAssetInput {
   name?: string;
-  description?: string;
+  description?: string | null;
   serialNumber?: string;
   categoryId?: string;
   departmentId?: string;
   location?: string;
-  purchaseDate?: string;
+  purchaseDate?: Date;
   purchaseCost?: number;
   condition?: AssetCondition;
   status?: AssetStatus;
-  manufacturer?: string;
-  model?: string;
-  vendor?: string;
-  warrantyStart?: string;
-  warrantyEnd?: string;
-  imageUrl?: string;
+  manufacturer?: string | null;
+  model?: string | null;
+  vendor?: string | null;
+  warrantyStart?: Date | null;
+  warrantyEnd?: Date | null;
+  imageUrl?: string | null;
   isBookable?: boolean;
 }
 

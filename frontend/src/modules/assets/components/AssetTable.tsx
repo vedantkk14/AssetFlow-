@@ -127,25 +127,25 @@ const AssetTable = ({ assets, pagination, onPageChange, onDeleteClick, rolePrefi
                   </TableCell>
                   <TableCell className="text-right">
                     <DropdownMenu>
-                      <DropdownMenuTrigger asChild>
-                        <Button variant="ghost" size="icon" className="h-8 w-8 rounded-full hover:bg-muted">
-                          <MoreVertical className="h-4 w-4 text-muted-foreground" />
-                        </Button>
+                      <DropdownMenuTrigger
+                        render={<Button variant="ghost" size="icon" className="h-8 w-8 rounded-full hover:bg-muted" />}
+                      >
+                        <MoreVertical className="h-4 w-4 text-muted-foreground" />
                       </DropdownMenuTrigger>
                       <DropdownMenuContent align="end" className="w-36 p-1">
-                        <DropdownMenuItem asChild className="cursor-pointer flex items-center gap-2">
-                          <Link to={`${rolePrefix}/assets/${asset.id}`}>
-                            <Eye className="h-3.5 w-3.5 text-muted-foreground" />
-                            <span>View Details</span>
-                          </Link>
+                        <DropdownMenuItem
+                          render={<Link to={`${rolePrefix}/assets/${asset.id}`} className="cursor-pointer flex items-center gap-2" />}
+                        >
+                          <Eye className="h-3.5 w-3.5 text-muted-foreground" />
+                          <span>View Details</span>
                         </DropdownMenuItem>
                         {canModify && (
                           <>
-                            <DropdownMenuItem asChild className="cursor-pointer flex items-center gap-2">
-                              <Link to={`${rolePrefix}/assets/${asset.id}/edit`}>
-                                <Pencil className="h-3.5 w-3.5 text-muted-foreground" />
-                                <span>Edit Asset</span>
-                              </Link>
+                            <DropdownMenuItem
+                              render={<Link to={`${rolePrefix}/assets/${asset.id}/edit`} className="cursor-pointer flex items-center gap-2" />}
+                            >
+                              <Pencil className="h-3.5 w-3.5 text-muted-foreground" />
+                              <span>Edit Asset</span>
                             </DropdownMenuItem>
                             <DropdownMenuItem
                               onClick={() => onDeleteClick(asset.id)}

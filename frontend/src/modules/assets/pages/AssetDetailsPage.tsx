@@ -1,12 +1,12 @@
 import { useParams, Link, useNavigate } from 'react-router-dom';
-import { ChevronLeft, Pencil, Landmark, Tag, Calendar, AlertTriangle, FileText, BadgeDollarSign, ShieldAlert } from 'lucide-react';
+import { ChevronLeft, Pencil, Landmark, Tag, Calendar, AlertTriangle, FileText, BadgeDollarSign, ShieldAlert, Wrench } from 'lucide-react';
 import { useAuth } from '@/hooks/useAuth';
 import { useAssetDetails } from '../api/assets.api';
 import QRCodeComponent from '../components/QRCodeComponent';
 import AssetTimeline from '../components/AssetTimeline';
 import { getStatusBadgeColor, getConditionBadgeColor } from '../components/AssetTable';
 import { SectionHeader } from '@/modules/dashboard/components/SectionHeader';
-import { Button } from '@/components/ui/button';
+import { Button, buttonVariants } from '@/components/ui/button';
 import { Card, CardContent } from '@/components/ui/card';
 import { Badge } from '@/components/ui/badge';
 
@@ -62,11 +62,12 @@ const AssetDetailsPage = () => {
       {/* Back navigation and Edit Action Header */}
       <div className="flex flex-col gap-2 sm:flex-row sm:items-center sm:justify-between border-b border-border pb-4">
         <div className="flex items-center gap-3">
-          <Button variant="ghost" size="icon" asChild className="h-9 w-9 rounded-full hover:bg-muted">
-            <Link to={`${rolePrefix}/assets`}>
-              <ChevronLeft className="h-5 w-5 text-muted-foreground" />
-            </Link>
-          </Button>
+          <Link
+            to={`${rolePrefix}/assets`}
+            className={buttonVariants({ variant: 'ghost', size: 'icon', className: 'h-9 w-9 rounded-full hover:bg-muted' })}
+          >
+            <ChevronLeft className="h-5 w-5 text-muted-foreground" />
+          </Link>
           <div className="space-y-0.5">
             <div className="flex items-center gap-2 flex-wrap">
               <h2 className="text-lg font-bold text-foreground">{asset.name}</h2>
@@ -78,12 +79,13 @@ const AssetDetailsPage = () => {
           </div>
         </div>
         {canModify && (
-          <Button asChild className="gap-2 font-medium self-end sm:self-auto">
-            <Link to={`${rolePrefix}/assets/${asset.id}/edit`}>
-              <Pencil className="h-4 w-4" />
-              <span>Edit Asset</span>
-            </Link>
-          </Button>
+          <Link
+            to={`${rolePrefix}/assets/${asset.id}/edit`}
+            className={buttonVariants({ className: 'gap-2 font-medium self-end sm:self-auto' })}
+          >
+            <Pencil className="h-4 w-4" />
+            <span>Edit Asset</span>
+          </Link>
         )}
       </div>
 

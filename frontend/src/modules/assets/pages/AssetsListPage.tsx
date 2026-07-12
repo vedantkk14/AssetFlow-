@@ -7,9 +7,9 @@ import AssetTable from '../components/AssetTable';
 import AssetCard from '../components/AssetCard';
 import ConfirmationDialog from '@/components/shared/ConfirmationDialog';
 import { SectionHeader } from '@/modules/dashboard/components/SectionHeader';
-import EmptyState from '@/modules/dashboard/components/EmptyState';
+import EmptyState from '@/components/shared/EmptyState';
 import LoadingSkeleton from '@/modules/dashboard/components/LoadingSkeleton';
-import { Button } from '@/components/ui/button';
+import { Button, buttonVariants } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
 import { Label } from '@/components/ui/label';
 
@@ -128,12 +128,10 @@ const AssetsListPage = () => {
         }
         actions={
           canCreate ? (
-            <Button asChild className="gap-2 font-medium">
-              <Link to={`${rolePrefix}/assets/new`}>
-                <PlusCircle className="h-4 w-4" />
-                <span>Register Asset</span>
-              </Link>
-            </Button>
+            <Link to={`${rolePrefix}/assets/new`} className={buttonVariants({ className: 'gap-2 font-medium' })}>
+              <PlusCircle className="h-4 w-4" />
+              <span>Register Asset</span>
+            </Link>
           ) : undefined
         }
       />

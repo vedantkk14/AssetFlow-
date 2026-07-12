@@ -15,6 +15,13 @@ export interface Department {
   description?: string;
 }
 
+export interface AssetCreator {
+  id: string;
+  name: string;
+  email: string;
+  role: string;
+}
+
 export interface Asset {
   id: string;
   assetTag: string;
@@ -39,6 +46,7 @@ export interface Asset {
   qrCode?: string;
   isBookable: boolean;
   createdBy: string;
+  creator?: AssetCreator;
   createdAt: string;
   updatedAt: string;
 }

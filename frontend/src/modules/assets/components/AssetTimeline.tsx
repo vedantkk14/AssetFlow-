@@ -79,7 +79,7 @@ export const AssetTimeline = ({ asset }: AssetTimelineProps) => {
   return (
     <Card className="border border-border shadow-xs">
       <CardContent className="p-5">
-        <Tabs defaultValue="allocations" variant="line">
+        <Tabs defaultValue="allocations">
           <TabsList className="border-b border-border w-full justify-start pb-0 h-10 gap-6">
             <TabsTrigger value="allocations" className="gap-2 pb-2 text-xs font-semibold uppercase">
               <UserCheck className="h-4 w-4" />
