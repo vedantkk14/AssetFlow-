@@ -1,5 +1,6 @@
 import { Navigate, Route, Routes } from 'react-router-dom';
 import AuthLayout from '@/components/layout/AuthLayout';
+import DashboardLayout from '@/components/layout/DashboardLayout';
 import ProtectedRoute from '@/components/shared/ProtectedRoute';
 import PublicRoute from '@/components/shared/PublicRoute';
 import Loader from '@/components/shared/Loader';
@@ -39,19 +40,27 @@ const AppRoutes = () => {
       </Route>
 
       <Route element={<ProtectedRoute allowedRoles={[ROLES.ADMIN]} />}>
-        <Route path="/admin/dashboard" element={<AdminDashboardPage />} />
+        <Route element={<DashboardLayout />}>
+          <Route path="/admin/dashboard" element={<AdminDashboardPage />} />
+        </Route>
       </Route>
 
       <Route element={<ProtectedRoute allowedRoles={[ROLES.ASSET_MANAGER]} />}>
-        <Route path="/asset-manager/dashboard" element={<AssetManagerDashboardPage />} />
+        <Route element={<DashboardLayout />}>
+          <Route path="/asset-manager/dashboard" element={<AssetManagerDashboardPage />} />
+        </Route>
       </Route>
 
       <Route element={<ProtectedRoute allowedRoles={[ROLES.DEPARTMENT_HEAD]} />}>
-        <Route path="/department/dashboard" element={<DepartmentHeadDashboardPage />} />
+        <Route element={<DashboardLayout />}>
+          <Route path="/department/dashboard" element={<DepartmentHeadDashboardPage />} />
+        </Route>
       </Route>
 
       <Route element={<ProtectedRoute allowedRoles={[ROLES.EMPLOYEE]} />}>
-        <Route path="/employee/dashboard" element={<EmployeeDashboardPage />} />
+        <Route element={<DashboardLayout />}>
+          <Route path="/employee/dashboard" element={<EmployeeDashboardPage />} />
+        </Route>
       </Route>
 
       <Route path="*" element={<Navigate to="/" replace />} />
@@ -60,3 +69,4 @@ const AppRoutes = () => {
 };
 
 export default AppRoutes;
+

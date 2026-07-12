@@ -7,4 +7,11 @@ export const API_ENDPOINTS = {
     FORGOT_PASSWORD: '/auth/forgot-password',
     RESET_PASSWORD: '/auth/reset-password',
   },
+  DASHBOARD: {
+    ADMIN: '/dashboard/admin',
+    ASSET_MANAGER: '/dashboard/asset-manager',
+    DEPARTMENT_HEAD: '/dashboard/department',
+    EMPLOYEE: '/dashboard/employee',
+  },
 } as const;
+
