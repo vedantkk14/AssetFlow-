@@ -1,11 +1,13 @@
 import { Navigate, Route, Routes } from 'react-router-dom';
 import AuthLayout from '@/components/layout/AuthLayout';
+import DashboardLayout from '@/components/layout/DashboardLayout';
 import ProtectedRoute from '@/components/shared/ProtectedRoute';
 import PublicRoute from '@/components/shared/PublicRoute';
 import Loader from '@/components/shared/Loader';
 import { useAuth } from '@/hooks/useAuth';
 import { ROLES, ROLE_DASHBOARD_PATH } from '@/types/role.types';
 import AuthRoutes from '@/modules/auth/routes';
+import OrganizationRoutes from '@/modules/organization/routes';
 import AdminDashboardPage from '@/modules/dashboard/pages/AdminDashboardPage';
 import AssetManagerDashboardPage from '@/modules/dashboard/pages/AssetManagerDashboardPage';
 import DepartmentHeadDashboardPage from '@/modules/dashboard/pages/DepartmentHeadDashboardPage';
@@ -52,6 +54,18 @@ const AppRoutes = () => {
 
       <Route element={<ProtectedRoute allowedRoles={[ROLES.EMPLOYEE]} />}>
         <Route path="/employee/dashboard" element={<EmployeeDashboardPage />} />
+      </Route>
+
+      <Route element={<ProtectedRoute allowedRoles={[ROLES.ADMIN]} />}>
+        <Route path="/organization" element={<DashboardLayout />}>
+          {OrganizationRoutes.map((route) =>
+            'index' in route && route.index ? (
+              <Route key="index" index element={route.element} />
+            ) : (
+              <Route key={route.path} path={route.path} element={route.element} />
+            )
+          )}
+        </Route>
       </Route>
 
       <Route path="*" element={<Navigate to="/" replace />} />

@@ -19,17 +19,48 @@ enum Status {
   INACTIVE
 }
 
-// departmentId is a plain column (not a relation) until the Organization module defines Department
 model User {
-  id           String   @id @default(cuid())
-  name         String
-  email        String   @unique
-  password     String
-  role         Role     @default(EMPLOYEE)
-  departmentId String?
-  status       Status   @default(ACTIVE)
-  createdAt    DateTime @default(now())
-  updatedAt    DateTime @updatedAt
+  id               String      @id @default(cuid())
+  name             String
+  email            String      @unique
+  password         String
+  role             Role        @default(EMPLOYEE)
+  departmentId     String?
+  department       Department? @relation("DepartmentEmployees", fields: [departmentId], references: [id])
+  headOfDepartment Department? @relation("DepartmentHead")
+  status           Status      @default(ACTIVE)
+  createdAt        DateTime    @default(now())
+  updatedAt        DateTime    @updatedAt
 
   @@map("users")
+}
+
+model Department {
+  id                 String       @id @default(cuid())
+  name               String       @unique
+  code               String       @unique
+  description        String?      @db.Text
+  parentDepartmentId String?
+  parentDepartment   Department?  @relation("DepartmentHierarchy", fields: [parentDepartmentId], references: [id], onDelete: SetNull)
+  childDepartments   Department[] @relation("DepartmentHierarchy")
+  departmentHeadId   String?      @unique
+  departmentHead     User?        @relation("DepartmentHead", fields: [departmentHeadId], references: [id])
+  employees          User[]       @relation("DepartmentEmployees")
+  status             Status       @default(ACTIVE)
+  createdAt          DateTime     @default(now())
+  updatedAt          DateTime     @updatedAt
+
+  @@map("departments")
+}
+
+model AssetCategory {
+  id                    String   @id @default(cuid())
+  name                  String   @unique
+  description           String?  @db.Text
+  defaultWarrantyMonths Int?
+  status                Status   @default(ACTIVE)
+  createdAt             DateTime @default(now())
+  updatedAt             DateTime @updatedAt
+
+  @@map("asset_categories")
 }

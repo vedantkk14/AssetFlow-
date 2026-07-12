@@ -1,13 +1,14 @@
 import { RouteObject } from 'react-router-dom';
-import DepartmentsPage from './pages/DepartmentsPage';
-import EmployeesPage from './pages/EmployeesPage';
-import RolesPage from './pages/RolesPage';
+import OrganizationHomePage from './pages/OrganizationHomePage';
+import DepartmentManagementPage from './pages/DepartmentManagementPage';
+import CategoryManagementPage from './pages/CategoryManagementPage';
+import EmployeeDirectoryPage from './pages/EmployeeDirectoryPage';
 
-// TODO: Wrap routes with ProtectedRoute / role-based access as needed
 const OrganizationRoutes: RouteObject[] = [
-  { path: 'departments', element: <DepartmentsPage /> },
-  { path: 'employees', element: <EmployeesPage /> },
-  { path: 'roles', element: <RolesPage /> },
+  { index: true, element: <OrganizationHomePage /> },
+  { path: 'departments', element: <DepartmentManagementPage /> },
+  { path: 'categories', element: <CategoryManagementPage /> },
+  { path: 'employees', element: <EmployeeDirectoryPage /> },
 ];
 
 export default OrganizationRoutes;

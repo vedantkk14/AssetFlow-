@@ -7,4 +7,7 @@ export const API_ENDPOINTS = {
     FORGOT_PASSWORD: '/auth/forgot-password',
     RESET_PASSWORD: '/auth/reset-password',
   },
+  DEPARTMENTS: '/departments',
+  CATEGORIES: '/categories',
+  EMPLOYEES: '/employees',
 } as const;
