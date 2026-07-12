@@ -4,12 +4,14 @@ import AssetManagerDashboardPage from './pages/AssetManagerDashboardPage';
 import DepartmentHeadDashboardPage from './pages/DepartmentHeadDashboardPage';
 import EmployeeDashboardPage from './pages/EmployeeDashboardPage';
 
-// TODO: Wrap routes with ProtectedRoute / role-based access as needed
+// Each dashboard route needs a different role guard, so AppRoutes.tsx wires
+// these pages directly (one ProtectedRoute per role) rather than importing
+// this array. Kept here for reference/consistency with other modules.
 const DashboardRoutes: RouteObject[] = [
-  { path: 'admin-dashboard', element: <AdminDashboardPage /> },
-  { path: 'asset-manager-dashboard', element: <AssetManagerDashboardPage /> },
-  { path: 'department-head-dashboard', element: <DepartmentHeadDashboardPage /> },
-  { path: 'employee-dashboard', element: <EmployeeDashboardPage /> },
+  { path: '/admin/dashboard', element: <AdminDashboardPage /> },
+  { path: '/asset-manager/dashboard', element: <AssetManagerDashboardPage /> },
+  { path: '/department/dashboard', element: <DepartmentHeadDashboardPage /> },
+  { path: '/employee/dashboard', element: <EmployeeDashboardPage /> },
 ];
 
 export default DashboardRoutes;

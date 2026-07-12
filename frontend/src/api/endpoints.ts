@@ -10,4 +10,10 @@ export const API_ENDPOINTS = {
   DEPARTMENTS: '/departments',
   CATEGORIES: '/categories',
   EMPLOYEES: '/employees',
+  DASHBOARD: {
+    ADMIN: '/dashboard/admin',
+    ASSET_MANAGER: '/dashboard/asset-manager',
+    DEPARTMENT_HEAD: '/dashboard/department',
+    EMPLOYEE: '/dashboard/employee',
+  },
 } as const;
