@@ -1,481 +1,183 @@
-<div align="center">
+# 🚀 AssetFlow – Enterprise Asset & Resource Management System
 
-# 🚀 AssetFlow
-
-### Enterprise Asset & Resource Management System
-
-*A modern ERP platform for managing organizational assets, resources, employees, maintenance, and operations.*
+<p align="center">
+  <b>Streamlining Asset Management, Resource Booking, and Organizational Workflows through a Modern ERP Platform.</b>
+</p>
 
 ---
 
-![React](https://img.shields.io/badge/React-19-blue?logo=react)
-![TypeScript](https://img.shields.io/badge/TypeScript-3178C6?logo=typescript)
-![Node.js](https://img.shields.io/badge/Node.js-339933?logo=node.js)
-![Express](https://img.shields.io/badge/Express-black?logo=express)
-![MySQL](https://img.shields.io/badge/MySQL-4479A1?logo=mysql)
-![Prisma](https://img.shields.io/badge/Prisma-2D3748?logo=prisma)
-![TailwindCSS](https://img.shields.io/badge/TailwindCSS-38BDF8?logo=tailwind-css)
-![License](https://img.shields.io/badge/License-MIT-green)
+## 📌 Overview
 
-</div>
+AssetFlow is a centralized Enterprise Asset Management System developed to help organizations efficiently manage assets, employees, departments, resource bookings, maintenance, and asset allocation.
+
+The platform replaces manual spreadsheets and paperwork with a secure, role-based ERP that improves visibility, accountability, and operational efficiency.
 
 ---
 
-# 📖 Overview
+## ✨ Key Features
 
-AssetFlow is a **modern Enterprise Asset & Resource Management System (ERP)** designed to streamline how organizations manage physical assets, shared resources, employees, maintenance operations, audits, and asset allocation.
-
-Traditional asset management often relies on spreadsheets, emails, or paper records, leading to misplaced assets, duplicate allocations, booking conflicts, and inefficient workflows.
-
-AssetFlow centralizes all these operations into a single intelligent platform with **Role-Based Access Control (RBAC)**, ensuring transparency, accountability, and operational efficiency.
-
----
-
-# 🎯 Problem Statement
-
-Organizations managing hundreds or thousands of assets often face challenges such as:
-
-- 📄 Manual spreadsheet tracking
-- ❌ Duplicate asset allocation
-- 🔍 Lost or misplaced assets
-- 🛠 Delayed maintenance workflows
-- 📅 Booking conflicts for shared resources
-- 📊 Lack of analytics and reporting
-- 🔐 Poor access control
-
-AssetFlow eliminates these problems by providing a centralized ERP solution.
+- 🔐 Secure Authentication with Role-Based Access Control (RBAC)
+- 🏢 Department & Employee Management
+- 📦 Asset Registration & Lifecycle Management
+- 🔄 Asset Allocation, Return & Transfer Workflow
+- 📅 Resource Booking with Conflict Detection
+- 🔧 Maintenance Request Management
+- 📋 Asset Audit & Verification
+- 📊 Analytics & Reports Dashboard
+- 🔔 Real-time Notifications & Activity Logs
 
 ---
 
-# ✨ Key Features
-
-## 🔐 Authentication & Authorization
-
-- JWT Authentication
-- Role-Based Access Control (RBAC)
-- Secure Password Hashing
-- Protected Routes
-- Admin Seed Account
-- Employee Signup Workflow
-
----
-
-## 🏢 Organization Management
-
-- Department Management
-- Employee Directory
-- Asset Categories
-- Department Hierarchy
-- Role Promotion
-- User Activation / Deactivation
-
----
-
-## 📦 Asset Management
-
-- Asset Registration
-- QR Code Generation
-- Asset Tag Generation
-- Asset Search & Filtering
-- Warranty Tracking
-- Purchase Details
-- Asset Lifecycle Tracking
-- Asset Status Management
-
----
-
-## 🔄 Asset Allocation & Transfer
-
-- Allocate Assets
-- Return Assets
-- Transfer Requests
-- Approval Workflow
-- Conflict Detection
-- Allocation History
-- Overdue Tracking
-
----
-
-## 📅 Resource Booking
-
-- Book Shared Resources
-- Meeting Room Booking
-- Vehicle Booking
-- Equipment Reservation
-- Calendar View
-- Booking Conflict Prevention
-
----
-
-## 🛠 Maintenance Management
-
-- Raise Maintenance Requests
-- Kanban Workflow
-- Technician Assignment
-- Status Tracking
-- Maintenance Timeline
-- Request History
-
----
-
-## 📊 Analytics & Reporting
-
-- Dashboard KPIs
-- Asset Utilization
-- Department Statistics
-- Maintenance Trends
-- Booking Analytics
-- Export Ready
-
----
-
-## 🔔 Notifications
-
-- Booking Alerts
-- Maintenance Updates
-- Transfer Notifications
-- Activity Logs
-- Approval Notifications
-
----
-
-# 👥 User Roles
+## 👥 User Roles
 
 | Role | Responsibilities |
 |------|------------------|
-| **Admin** | Organization management, reports, analytics, audits |
-| **Asset Manager** | Asset registration, allocation, maintenance |
-| **Department Head** | Department assets, approvals, booking |
-| **Employee** | View assets, raise maintenance, booking resources |
+| **Admin** | Organization setup, employee management, analytics, audits |
+| **Asset Manager** | Register assets, allocate assets, maintenance approvals |
+| **Department Head** | Department monitoring and approvals |
+| **Employee** | View assets, book resources, request maintenance & transfers |
 
 ---
 
-# 🏗 System Architecture
+## 🛠 Tech Stack
 
-```text
-                        React Frontend
-                               │
-                               │
-                   REST APIs (Express.js)
-                               │
-               JWT Authentication + RBAC
-                               │
-                      Prisma ORM
-                               │
-                           MySQL
-```
-
----
-
-# 🧩 Modules
-
-| Module | Status |
-|----------|--------|
-| Authentication | ✅ |
-| Dashboard | ✅ |
-| Organization Setup | ✅ |
-| Asset Management | ✅ |
-| Asset Allocation & Transfer | ✅ |
-| Resource Booking | ✅ |
-| Maintenance Management | ✅ |
-| Reports & Analytics | ✅ |
-| Notifications | ✅ |
-
----
-
-# ⚙️ Tech Stack
-
-## Frontend
-
-- React
+### Frontend
+- React.js
 - TypeScript
-- Vite
 - Tailwind CSS
 - ShadCN UI
 - React Router
-- React Hook Form
-- Zod
-- Axios
 - TanStack Query
-- Recharts
-- Framer Motion
 
----
-
-## Backend
-
+### Backend
 - Node.js
 - Express.js
 - TypeScript
 - Prisma ORM
 - JWT Authentication
-- bcrypt
-- Multer
 
----
-
-## Database
-
+### Database
 - MySQL
 
----
-
-## Tools
-
-- Git
-- GitHub
-- VS Code
-- Prisma Studio
+### Tools
 - Cloudinary
-- Postman
+- Recharts
+- Git & GitHub
 
 ---
 
-# 📂 Project Structure
+## 🏗️ Core Modules
+
+- Authentication
+- Dashboard
+- Organization Setup
+- Asset Management
+- Asset Allocation & Transfer
+- Resource Booking
+- Maintenance Management
+- Asset Audit
+- Reports & Analytics
+- Notifications
+
+---
+
+## 📂 Project Structure
 
 ```text
 AssetFlow
-
 ├── frontend
 │   ├── modules
-│   │   ├── auth
-│   │   ├── dashboard
-│   │   ├── organization
-│   │   ├── assets
-│   │   ├── allocation
-│   │   ├── booking
-│   │   ├── maintenance
-│   │   ├── reports
-│   │   └── notifications
-│   │
 │   ├── shared
 │   ├── layouts
 │   └── services
 │
 ├── backend
 │   ├── modules
-│   │   ├── auth
-│   │   ├── organization
-│   │   ├── assets
-│   │   ├── allocation
-│   │   ├── booking
-│   │   ├── maintenance
-│   │   ├── reports
-│   │   └── notifications
-│   │
 │   ├── middleware
 │   ├── prisma
-│   └── utils
+│   └── config
 │
-└── README.md
+└── docs
 ```
 
 ---
 
-# 🗄 Database Schema
+## 🚀 Getting Started
 
-The application uses a relational MySQL database managed through Prisma ORM.
-
-Main entities include:
-
-- Users
-- Departments
-- Asset Categories
-- Assets
-- Asset Allocations
-- Transfer Requests
-- Resource Bookings
-- Maintenance Requests
-- Notifications
-
----
-
-# 🚀 Installation
-
-## Clone Repository
+### Clone Repository
 
 ```bash
-git clone https://github.com/your-username/AssetFlow.git
-
+git clone https://github.com/<username>/AssetFlow.git
 cd AssetFlow
 ```
 
----
-
-## Backend
+### Backend
 
 ```bash
 cd backend
-
 npm install
-```
-
-Create
-
-```
-.env
-```
-
-Run
-
-```bash
 npx prisma migrate dev
-
 npx prisma db seed
-
 npm run dev
 ```
 
----
-
-## Frontend
+### Frontend
 
 ```bash
 cd frontend
-
 npm install
-
 npm run dev
 ```
 
 ---
 
-# 🔑 Default Admin Credentials
+## 📸 Screenshots
 
-```text
-Email
-
-admin@assetflow.com
-
-Password
-
-Admin@123
-```
-
----
-
-# 📸 Screenshots
-
-> Add screenshots of the following pages
-
+> Add screenshots or GIFs of:
 - Login
-- Dashboard
-- Organization Setup
+- Admin Dashboard
 - Asset Management
-- Asset Allocation
-- Booking
-- Maintenance
-- Reports
+- Allocation Workflow
+- Resource Booking
+- Maintenance Dashboard
 
 ---
 
-# 📈 Workflow
+## 🎯 Problem Statement
 
-```text
-Employee Signup
+Organizations often struggle with managing physical assets using spreadsheets and manual processes, resulting in misplaced assets, duplicate allocations, maintenance delays, and poor visibility.
 
-↓
-
-Admin Login
-
-↓
-
-Organization Setup
-
-↓
-
-Departments
-
-↓
-
-Categories
-
-↓
-
-Employees
-
-↓
-
-Asset Registration
-
-↓
-
-Asset Allocation
-
-↓
-
-Transfer / Return
-
-↓
-
-Maintenance
-
-↓
-
-Reports
-
-↓
-
-Analytics
-```
+AssetFlow solves these challenges through a centralized ERP platform with secure role-based workflows and real-time asset tracking.
 
 ---
 
-# 🔒 Security
+## 🌟 Future Enhancements
 
-- JWT Authentication
-- Password Hashing
-- Role-Based Access Control
-- Protected Routes
-- Input Validation
-- Secure Environment Variables
-
----
-
-# 🌟 Future Enhancements
-
-- AI-powered Asset Recommendation
+- QR Code Scanning
+- AI-powered Asset Assistant
 - Predictive Maintenance
-- QR Scanner Integration
 - Mobile Application
-- Email Notifications
-- RFID Asset Tracking
+- Email & Push Notifications
 - Multi-Organization Support
-- Audit Automation
-- OCR-based Asset Registration
-- Voice Assistant
 
 ---
 
-# 👨‍💻 Team
+## 👨‍💻 Team
 
 | Name | Role |
 |------|------|
 | Vedant Kolhapure | Full Stack Developer |
 | Vrishabh | Full Stack Developer |
+| *Member 3* | Full Stack Developer |
 
 ---
 
-# 🤝 Contributing
+## 📄 License
 
-Contributions, suggestions, and feature requests are welcome.
-
-Fork the repository, create a feature branch, commit your changes, and submit a Pull Request.
+This project was developed as part of the **Student Innovation & Product Summit (SIPS) Hackathon** and is intended for educational and demonstration purposes.
 
 ---
 
-# 📄 License
-
-This project was developed for the **IIM Bangalore Student Innovation & Product Summit (SIPS) Hackathon**.
-
-For educational and demonstration purposes.
-
----
-
-<div align="center">
-
-### ⭐ If you like this project, don't forget to star the repository!
-
-Made with ❤️ by Team AssetFlow
-
-</div>
+<p align="center">
+⭐ If you like this project, don't forget to star the repository!
+</p>
